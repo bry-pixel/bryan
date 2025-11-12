@@ -44,4 +44,4 @@
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/inventory-system.git
+   git clone https://github.com/bry-pixel/bryan.git
