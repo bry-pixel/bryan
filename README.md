@@ -5,7 +5,7 @@
 ---
 
 ## 🌐 Live Demo  
-👉 **[Click here to try it!](https://inventorysystemphp.kesug.com/index.php)**  
+👉 **[Click here to try it!](http://www.inventorysystemphp.kesug.com/?i=1)**  
 
 ---
 
