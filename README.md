@@ -12,7 +12,7 @@
 ##  Database Information
 
 **Database Name:** `inventory_system`  
-> ⚙️ Before running the system, import the provided `.sql` file into your MySQL database.
+>  Before running the system, import the provided `.sql` file into your MySQL database.
 
 ---
 
@@ -29,7 +29,7 @@
 
 ---
 
-## ⚙️ Key Features
+## Key Features
 
  **Role-Based Access Control** — Admin, Manager, Cashier, and Guest roles  
 **Product Management** — Add, edit, delete, and track items  
