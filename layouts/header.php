@@ -88,78 +88,6 @@
   }
 
 
-
-
-  .chatbot-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-}
-
-.chatbot-toggle {
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 26px;
-  cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-  transition: background 0.3s;
-}
-.chatbot-toggle:hover { background: #0056b3; }
-
-.chatbot-box {
-  display: none;
-  flex-direction: column;
-  width: 320px;
-  height: 400px;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  overflow: hidden;
-}
-.chatbot-header {
-  background: #007bff;
-  color: #fff;
-  padding: 12px;
-  text-align: center;
-  font-weight: bold;
-}
-.chatbot-messages {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  font-size: 14px;
-}
-.chatbot-message {
-  margin: 6px 0;
-  padding: 8px 12px;
-  border-radius: 10px;
-  max-width: 80%;
-}
-.user-message { background: #e9f5ff; align-self: flex-end; }
-.bot-message { background: #f1f1f1; align-self: flex-start; }
-.chatbot-input {
-  display: flex;
-  border-top: 1px solid #ddd;
-}
-.chatbot-input input {
-  flex: 1;
-  border: none;
-  padding: 10px;
-  font-size: 14px;
-}
-.chatbot-input button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-.chatbot-input button:hover { background: #0056b3; }
 </style>
 
 <title><?php echo htmlspecialchars($page_title ?? '', ENT_QUOTES, 'UTF-8'); ?></title>
@@ -212,16 +140,6 @@
   <?php endif;?>
 </div>
 <?php endif; ?>
-<div class="chatbot-container">
-  <button class="chatbot-toggle"><i class="glyphicon glyphicon-comment"></i></button>
-  <div class="chatbot-box">
-    <div class="chatbot-header">💬 Inventory Assistant</div>
-    <div class="chatbot-messages" id="chatbotMessages"></div>
-    <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Type a message..." />
-      <button id="sendBtn"><i class="glyphicon glyphicon-send"></i></button>
-    </div>
-  </div>
 </div>
 
 <script>
@@ -255,47 +173,8 @@
   })();
 
 
-  //chatbot toggle
-  document.addEventListener("DOMContentLoaded", function() {
-  const toggleBtn = document.querySelector(".chatbot-toggle");
-  const chatBox = document.querySelector(".chatbot-box");
-  const messages = document.getElementById("chatbotMessages");
-  const input = document.getElementById("chatInput");
-  const sendBtn = document.getElementById("sendBtn");
-
-  toggleBtn.addEventListener("click", () => {
-    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
-  });
-
-  function appendMessage(sender, text) {
-    const msg = document.createElement("div");
-    msg.className = `chatbot-message ${sender}-message`;
-    msg.innerText = text;
-    messages.appendChild(msg);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  async function sendMessage() {
-    const userText = input.value.trim();
-    if (!userText) return;
-    appendMessage("user", userText);
-    input.value = "";
-
-    const res = await fetch("chatbot.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userText })
-    });
-    const data = await res.json();
-    appendMessage("bot", data.reply);
-  }
-
-  sendBtn.addEventListener("click", sendMessage);
-  input.addEventListener("keypress", e => {
-    if (e.key === "Enter") sendMessage();
-  });
-});
 </script>
 
 <div class="page">
   <div class="container-fluid">
+
