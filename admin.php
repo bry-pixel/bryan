@@ -12,6 +12,7 @@ $products_sold   = find_higest_saleing_product('10');
 $recent_products = find_recent_product_added('5');
 $recent_sales    = find_recent_sale_added('5');
 $low_stock_products = find_by_sql("SELECT name, quantity, unit FROM products WHERE quantity <= 10");
+$total_transactions = count_by_id('transactions');
 
 $total_sales = find_by_sql("SELECT SUM(price*qty) AS revenue FROM sales");
 $total_sales = $total_sales[0]['revenue'] ?? 0;
@@ -80,7 +81,7 @@ $chart_data = get_months_chart_data();
             <div class="panel panel-box clearfix">
                 <div class="panel-icon pull-left bg-blue2"><i class="glyphicon glyphicon-list-alt"></i></div>
                 <div class="panel-value pull-right">
-                    <h2 class="margin-top"><?= $c_sale['total'] ?></h2>
+                    <h2 class="margin-top"><?= $total_transactions['total'] ?></h2>
                     <p class="text-muted">Transactions</p>
                 </div>
             </div>
